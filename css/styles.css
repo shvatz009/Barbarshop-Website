@@ -2,7 +2,7 @@
     Vintage Barbershop Theme
     File: css/styles.css
     =============================== */
-/* ---- CSS Variables (Vintage Palatee) ---- */
+/* ---- CSS Variables (Vintage Palette) ---- */
 
 :root {
   --color-bg-primary: #f4efea;
@@ -383,24 +383,15 @@ body {
   }
 
   .feature-grid {
-    flex-direction: flex;
     gap: 16px;
-    max-height: 70vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x pan-y;
   }
 
   .feature-card {
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: none;
-    scroll-snap-align: start;
-  }
-
-  .feature-card {
-    flex: 0 0 82vw;
+    flex: 0 0 82%;
     max-width: 340px;
     scroll-snap-align: start;
   }

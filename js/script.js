@@ -7,9 +7,9 @@ const yearEl = document.getElementById("year");
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const featureGrid = document.getElementById("featureGrid");
-const ctaBtn = document.getElementById("ctaBtn");
+const ctaBtn = document.getElementById("ctaPrimary");
 const ctaText = document.getElementById("ctaText");
-const callBtn = document.getElementById("callBtn");
+const callBtn = document.getElementById("ctaSecondary");
 const phoneLink = document.getElementById("phoneLink");
 const heading = document.getElementById("heroHeading");
 // ----- Helpers / Functions -----
@@ -18,7 +18,7 @@ const setCurrentYear = () => {
     const now = new Date();
     yearEl.textContent = now.getFullYear();
 }
-// Toggle Mobile Menu OPen/Close
+// Toggle Mobile Menu Open/Close
 let isMenuOpen = false;
 const toggleMobileMenu = () => {
     if (!mobileMenu) return;
@@ -34,7 +34,7 @@ const toggleMobileMenu = () => {
 const closeMobileMenu = () => {
     if (!mobileMenu) return;
     mobileMenu.classList.remove("is-open");
-    isMenuOPen = false;
+    isMenuOpen = false;
 };
 // Reusable function with parameters (practice pattern)
 const updateHeadingText = (newText) => {
@@ -66,7 +66,7 @@ if (featureGrid) {
         featureGrid.scrollLeft += event.deltaY;
     }, { passive: false });
 }
-// 5) BTA Button: "Book Now" (Plaseholder behavior)
+// 5) CTA Button: "Book Now" (Placeholder behavior)
 if (ctaBtn) {
     ctaBtn.addEventListener("click", () => {
         updateHeadingText("Booking coming next - Great choice!")
