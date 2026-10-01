@@ -59,6 +59,17 @@ body {
   gap: 16px;
 }
 
+.site-header {
+  transition: padding 0.2s ease, box-shadow 0.2s ease, width 0.2s ease margin 0.2s ease;
+}
+
+.site-header.is-scrolled {
+  padding: 2px 0;
+  width: calc(100% - 24px);
+  margin: 12px auto 0 auto;
+  border-radius: 18px;
+}
+
 .logo {
   color: var(--color-text-light);
   text-decoration: none;
@@ -246,19 +257,23 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 8px;
-  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
 }
 
 .feature-card {
   flex: 0 0 calc((100% - 36px) / 3);
   min-width: 0;
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-beige);
   border-radius: var(--radius);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-  border: 1px, solid rgba(58, 45, 40, 0.12);
+  border: 1px solid rgba(58, 45, 40, 0.12);
   padding: 14px;
+  overflow: hidden;
 }
 
+.feature-image,
 .feature-img {
   width: 100%;
   height: 180px;
@@ -266,6 +281,7 @@ body {
   border-radius: 12px;
   border: 2px solid rgba(58, 45, 40, 0.18);
   margin-bottom: 12px;
+  display: block;
 }
 
 .feature-title {

@@ -12,9 +12,40 @@ const ctaText = document.getElementById("ctaText");
 const callBtn = document.getElementById("ctaSecondary");
 const phoneLink = document.getElementById("phoneLink");
 const heading = document.getElementById("heroHeading");
+const nav = document.getElementById("nav");
+// -------Services Data (Array of Objects) -------//
+const services = [
+    {
+        title: "Classic Haircut",
+        text: "Timeless cuts with modern precision tailored to your style",
+        Image: "assets/images/feature-1.jpg"
+    },
+    {
+        title: "Beard Trim",
+        text: "Expert beard shaping and maintenance for a polished look",
+        Image: "assets/images/feature-2.jpg"
+    },
+    {
+        title: "Straight Razor Shave",
+        text: "Luxurious shaves with warm towels for a smooth finish",
+        Image: "assets/images/feature-3.jpg"
+    },
+    {
+        title: "Childrens Haircuts",
+        text: "Specialized cuts for kids with a fun and comfortable experience",
+        Image: "assets/images/feature-5.jpg"
+    }
+]
+//----- Nav Links (for future use) -----
+const navLinks = [
+    { label: "Home", href: "#hero" },
+    { label: "Services", href: "#features" },
+    { label: "Book", href: "#cta" },
+    { label: "Contact", href: "#footer" }
+];
 // ----- Helpers / Functions -----
 // Update footer year automatically
-const setCurrentYear = () => {
+function setCurrentYear() {
     const now = new Date();
     yearEl.textContent = now.getFullYear();
 }
@@ -63,7 +94,7 @@ if (featureGrid) {
     featureGrid.addEventListener("wheel", (event) => {
         if (featureGrid.scrollWidth <= featureGrid.clientWidth) return;
         event.preventDefault();
-        featureGrid.scrollLeft += event.deltaY;
+        featureGrid.scrollBy({ left: event.deltaY, behavior: "smooth" });
     }, { passive: false });
 }
 // 5) CTA Button: "Book Now" (Placeholder behavior)
@@ -82,3 +113,35 @@ if (callBtn) {
         }
     });
 }
+//------- Render Features using map() -------
+const renderFeaturesMap = () => {
+    const cardsHTML = services.map((service) => {
+        return `
+        <article class="feature-card">
+            <img src="${service.Image}" alt="${service.title}" class="feature-image" />
+            <h3 class="feature-title">${service.title}</h3>
+            <p class="feature-text">${service.text}</p>
+        </article>
+        `;
+    }).join("");
+    featureGrid.innerHTML = cardsHTML;
+};
+const renderNavigation = () => {
+    // Desktop Nav
+    if (nav) {
+        const navHTML = navLinks.map((link) => {
+            return `<a href="${link.href}" class="nav-link">${link.label}</a>`;
+        }).join("");
+        nav.innerHTML = navHTML;
+    };
+    // Mobile Nav 
+    if (mobileMenu) {
+        const mobileHTML = navLinks.map((link) => {
+            return `<a href="${link.href}" class="mobile-link">${link.label}</a>`;
+        }).join("");
+        mobileMenu.innerHTML = mobileHTML;
+    };
+}
+// ----- Function calls -----
+renderFeaturesMap();
+renderNavigation();
