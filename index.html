@@ -1,130 +1,193 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vintage Barbershop</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <!-- =========== Header/Navbar=========-->
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="assets/images/logo (1).png" class="logo" id="logo"
-          >Vintage Barbershop</a
-        >
-        <nav class="nav" id="nav"></nav>
-        <!-- Mobile Menu Button (for later JS)-->
-        <button class="menu-btn" id="menuBtn" aria-label="Open Menu">≡</button>
-      </div>
-      <!-- Mobile Menu Panel (for later JS)-->
-      <div class="mobile-menu" id="mobileMenu"></div>
-    </header>
-    <!-- ======== HERO SECTION ========= -->
-    <section class="hero" id="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1 id="heroHeading">Classic Cuts. Clean Shaves. Vintage Styles.</h1>
-          <p id="heroSubtext">
-            Experience the tradition of a true barbershop: precision fades,
-            straight-razor shaves, and a welcoming atmosphere.
-          </p>
-          <div class="hero-actions">
-            <a href="#cta" class="btn btn-primary" id="bookBtn"
-              >Book an Appointment</a
-            >
-            <a href="#features" class="btn btn-secondary" id="serviceBtn"
-              >View Services</a
-            >
-          </div>
-        </div>
-        <div class="hero-media">
-          <img
-            src="assets/images/hero.jpg"
-            alt="Barbershop hero"
-            class="hero-img"
-            id="heroImg"
-          />
-        </div>
-      </div>
-    </section>
-    <!-- ===== Features / Services Section =====-->
-    <section class="features" id="features">
-      <div class="container">
-        <h2 class="section-title" id="featuresTitle">Services</h2>
-        <p class="section-subtitle" id="featureSubtitle">
-          Quality grooming services designed for comfort, style, and confidence.
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vintage Barbershop</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/calendar.css" />
+</head>
+
+<body>
+  <!-- =========== Header/Navbar=========-->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="assets/images/logo (1).png" class="logo" id="logo">Vintage Barbershop</a>
+      <nav class="nav" id="nav"></nav>
+      <!-- Mobile Menu Button (for later JS)-->
+      <button class="menu-btn" id="menuBtn" aria-label="Open Menu">≡</button>
+    </div>
+    <!-- Mobile Menu Panel (for later JS)-->
+    <div class="mobile-menu" id="mobileMenu"></div>
+  </header>
+  <!-- ======== HERO SECTION ========= -->
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1 id="heroHeading">Classic Cuts. Clean Shaves. Vintage Styles.</h1>
+        <p id="heroSubtext">
+          Experience the tradition of a true barbershop: precision fades,
+          straight-razor shaves, and a welcoming atmosphere.
         </p>
-        <div class="feature-grid" id="featureGrid"></div>
+        <div class="hero-actions">
+          <a href="#cta" class="btn btn-primary" id="bookBtn">Book an Appointment</a>
+          <a href="#features" class="btn btn-secondary" id="serviceBtn">View Services</a>
+        </div>
       </div>
+      <div class="hero-media">
+        <img src="assets/images/hero.jpg" alt="Barbershop hero" class="hero-img" id="heroImg" />
+      </div>
+    </div>
+  </section>
+  <!-- ===== Features / Services Section =====-->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title" id="featuresTitle">Services</h2>
+      <p class="section-subtitle" id="featureSubtitle">
+        Quality grooming services designed for comfort, style, and confidence.
+      </p>
+      <div class="feature-grid" id="featureGrid"></div>
+    </div>
+  </section>
+  <!-- Call to Action Section-->
+  <section class="cta" id="cta">
+    <div class="container cta-inner">
+      <div class="cta-text">
+        <h2 id="ctaHeading">Ready for a fresh look?</h2>
+        <p id="ctaText">
+          Walk-ins welcome, appointments recommended. Book today and leave
+          looking sharp!
+        </p>
+      </div>
+      <div class="cta-text">
+        <button type="button" class="btn btn-primary ctaBtn" id="ctaPrimary">
+          Book Now!
+        </button>
+        <button type="button" class="btn btn-secondary ctaBtn" id="ctaSecondary">
+          Call Us!
+        </button>
+      </div>
+    </div>
+    <div class="container booking-layout">
+      <div class="calendar-card">
+        <div class="calendar-header">
+          <button class="calendar-nav-btn" id="prevMonthBtn" type="button" aria-label="Previous month">&#8592;</button>
+          <h3 id="calendarMonthLabel" aria-live="polite">Month Year</h3>
+          <button class="calendar-nav-btn" id="nextMonthBtn" type="button" aria-label="Next month">&#8594;</button>
+        </div>
+
+        <div class="calendar-weekdays">
+          <span>Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </div>
+
+      <div class="booking-panel">
+        <h3 class="booking-panel-title">Your Appointment</h3>
+
+        <p class="selected-date-text">
+          <span>Selected date: <span id="selectedDate">Choose a date</span></span>
+          <span class="selected-time-summary">Selected time: <span id="selectedTime">Choose a time</span></span>
+        </p>
+        <button type="button" class="change-time-btn" id="changeTimeBtn" hidden>Change time</button>
+        <div class="time-slots" id="timeSlots" role="group" aria-label="Available appointment times"></div>
+        <form id="bookingForm">
+          <div class="form-group">
+            <label for="customerName">Name</label>
+            <input type="text" id="customerName" placeholder="Enter your name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="customerService">Service</label>
+            <select id="customerService" required>
+              <option value="" selected disabled>Choose a service</option>
+              <option value="Classic Haircut">Classic Haircut</option>
+              <option value="Beard Trim">Beard Trim</option>
+              <option value="Straight Razor Shave">Straight Razor Shave</option>
+              <option value="Children's Haircut">Children's Haircut</option>
+              <option value="Children's Haircut (ASD)">Children's Haircut (ASD)</option>
+            </select>
+          </div>
+          <input type="hidden" id="selectedTimeInput" />
+
+          <div class="form-group">
+            <label for="customerEmail">Email</label>
+            <input type="email" id="customerEmail" placeholder="Enter your email" required />
+            <button type="submit" class="btn btn-primary booking-submit-btn">
+              Confirm Appointment
+            </button>
+            <p id="bookingMessage" class="booking-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+    </div>
+  <div class="service-modal" id="serviceModal" aria-hidden="true">
+    <button class="service-modal-overlay" id="serviceModalOverlay" type="button" aria-label="Close service details"
+      tabindex="-1"></button>
+    <section class="service-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+      <button class="service-modal-close" id="serviceModalClose" type="button" aria-label="Close service details">
+        &times;
+      </button>
+      <h2 id="serviceModalTitle"></h2>
+      <p class="service-modal-price service-price-pill" id="serviceModalPrice"></p>
+      <ul class="service-modal-list" id="serviceModalList"></ul>
     </section>
-    <!-- Call to Action Section-->
-    <section class="cta" id="cta">
-      <div class="container cta-inner">
-        <div class="cta-text">
-          <h2 id="ctaHeading">Ready for a fresh look?</h2>
-          <p id="ctaText">
-            Walk-ins welcome, appointments recommended. Book today and leave
-            looking sharp!
-          </p>
-        </div>
-        <div class="cta-text">
-          <button type="button" class="btn btn-primary ctaBtn" id="ctaPrimary">
-            Book Now!
-          </button>
-          <button
-            type="button"
-            class="btn btn-secondary ctaBtn"
-            id="ctaSecondary"
-          >
-            Call Us!
-          </button>
-        </div>
-      </div>
+  </div>
+  <div class="service-modal" id="callModal" aria-hidden="true">
+    <button class="service-modal-overlay" id="callModalOverlay" type="button" aria-label="Close call dialog"
+      tabindex="-1"></button>
+    <section class="service-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="callModalTitle">
+      <button class="service-modal-close" id="callModalClose" type="button" aria-label="Close call dialog">
+        &times;
+      </button>
+      <h2 id="callModalTitle">Call Us</h2>
+      <p>Reach us at:</p>
+      <p class="service-modal-price call-modal-phone" id="callModalPhone"></p>
     </section>
-    <!-- ===== Footer Section ===== -->
-    <footer class="site-footer" id="footer">
-      <div class="container footer-inner">
-        <div class="footer-col">
-          <h3 class="footer-title">Vintage Barbershop</h3>
-          <p class="footer-text">Old-school service. Modern craftsmanship.</p>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">Hours</h4>
-          <ul class="footer-list" id="hoursList">
-            <li>Mon-Fri: 9am - 7pm</li>
-            <li>Sat: 10am - 5pm</li>
-            <li>Sun: Closed</li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">Contact</h4>
-          <ul class="footer-list">
-            <li>
-              <a href="#" class="footer-link" id="addressLink"
-                >123 Main St, Cookeville</a
-              >
-            </li>
-            <li>
-              <a href="tel:+15551234567" class="footer-link" id="phoneLink"
-                >(555) 123-4567</a
-              >
-            </li>
-            <li>
-              <a href="#" class="footer-link" id="emailLink"
-                >hello@vintagebarbershop.com</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="container footer-bottom">
-          <p class="copyright">
-            <span id="year"></span> Vintage Barbershop. All rights reserved.
-          </p>
-        </div>
+  </div>
+  </section>
+  <!-- ===== Footer Section ===== -->
+  <footer class="site-footer" id="footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h3 class="footer-title">Vintage Barbershop</h3>
+        <p class="footer-text">Old-school service. Modern craftsmanship.</p>
       </div>
-    </footer>
-    <!-- JS -->
-    <script src="js/script.js"></script>
-  </body>
+      <div class="footer-col">
+        <h4 class="footer-heading">Hours</h4>
+        <ul class="footer-list" id="hoursList"></ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-list">
+          <li>
+            <a href="#" class="footer-link" id="addressLink">123 Main St, Cookeville</a>
+          </li>
+          <li>
+            <span id="phoneNumber">(555) 123-4567</span>
+          </li>
+          <li>
+            <a href="#" class="footer-link" id="emailLink">hello@vintagebarbershop.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container footer-bottom">
+        <p class="copyright">
+          <span id="year"></span> Vintage Barbershop. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- JS -->
+  <script src="js/script.js"></script>
+</body>
+
 </html>
